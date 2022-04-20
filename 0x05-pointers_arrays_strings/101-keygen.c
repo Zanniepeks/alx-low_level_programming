@@ -3,17 +3,31 @@
 #include <time.h>
 #include <stdio.h>
 /**
- * main - generates a random key
- * Return: returns zero if false
+ * main - generates keygen.
+ *
+ * Return: Always 0.
  */
+
 int main(void)
 {
-	int num;
+	int x = 0, y = 0;
 
-	srand(time(0));
-	num = rand();
-	printf("Tada! Congrats %i\n", num);
-	fprintf(stderr, "Tada!Congrats");
+	time_t t;
 
+	srand((unsigned int) time(&t));
+
+	while (y < 2772)
+	{
+		x = rand() % 128;
+
+		if ((x + y) == 2772)
+			break;
+
+		y = y + x;
+
+		printf("%c", x);
+	}
+
+	printf("%c\n", (2772 - y));
 	return (0);
 }
